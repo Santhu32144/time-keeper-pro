@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { useNavigate, useLocation, Outlet } from 'react-router-dom';
 import { useAppSelector, useAppDispatch } from '@/store/hooks';
-import { logout } from '@/store/slices/authSlice';
-import { toggleCollapse, setActiveSection } from '@/store/slices/sidebarSlice';
+import { logout } from '@/store/reducers/authReducer';
+import { toggleCollapse, setActiveSection } from '@/store/reducers/sidebarReducer';
 import { cn } from '@/lib/utils';
 import {
   Clock,
