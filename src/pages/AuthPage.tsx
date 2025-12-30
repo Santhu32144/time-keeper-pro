@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { loginAsync, registerAsync, clearError } from '@/store/slices/authSlice';
+import { loginAsync, registerAsync } from '@/store/actions';
+import { clearError } from '@/store/reducers/authReducer';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';

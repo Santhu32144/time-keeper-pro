@@ -1,62 +1,12 @@
-import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
-import { v4 as uuidv4 } from 'uuid';
-
-export interface Project {
-  id: string;
-  name: string;
-  code: string;
-  startDate: string;
-  createdAt: string;
-  createdBy: string;
-  status: 'active' | 'completed' | 'on-hold';
-}
-
-interface ProjectState {
-  projects: Project[];
-  isLoading: boolean;
-  error: string | null;
-}
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { ProjectState, Project } from '../types';
+import { createProjectAsync, updateProjectAsync, deleteProjectAsync } from '../actions/projectActions';
 
 const initialState: ProjectState = {
   projects: [],
   isLoading: false,
   error: null,
 };
-
-export const createProjectAsync = createAsyncThunk(
-  'projects/create',
-  async (
-    project: Omit<Project, 'id' | 'createdAt' | 'status'>,
-    { rejectWithValue }
-  ) => {
-    await new Promise((resolve) => setTimeout(resolve, 300));
-    
-    const newProject: Project = {
-      ...project,
-      id: uuidv4(),
-      createdAt: new Date().toISOString(),
-      status: 'active',
-    };
-    
-    return newProject;
-  }
-);
-
-export const updateProjectAsync = createAsyncThunk(
-  'projects/update',
-  async (project: Project, { rejectWithValue }) => {
-    await new Promise((resolve) => setTimeout(resolve, 300));
-    return project;
-  }
-);
-
-export const deleteProjectAsync = createAsyncThunk(
-  'projects/delete',
-  async (projectId: string, { rejectWithValue }) => {
-    await new Promise((resolve) => setTimeout(resolve, 300));
-    return projectId;
-  }
-);
 
 const projectSlice = createSlice({
   name: 'projects',

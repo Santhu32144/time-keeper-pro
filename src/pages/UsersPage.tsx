@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { createUserAsync, deleteUserAsync, assignManagerAsync, AppUser } from '@/store/slices/userSlice';
+import { createUserAsync, deleteUserAsync, assignManagerAsync } from '@/store/actions';
+import { AppUser } from '@/store/types';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
